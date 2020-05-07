@@ -100,7 +100,15 @@ def calculate_periods():
 
 
 def calculate_differentiated():
+    i = interest / 100 / 12
+    total = 0
+    for m in range(1, periods + 1):
+        D = principal / periods + i * (principal - principal * (m - 1) / periods)
+        total += math.ceil(D)
+        print(f'Month {m}: paid out {math.ceil(D)}')
     print()
+    over = total - principal
+    print(f'Overpayment = {over}')
 
 
 if __name__ == '__main__':
